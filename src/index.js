@@ -18,9 +18,15 @@ function addToList(beer){
 
     li.innerText = `${beer.name}`
     beerList.append(li)
-}
 
-beerList.addEventListener('click', )
+    li.addEventListener('click', checkName)
+
+    function checkName(){
+        if(li.innerText == `${beer.name}`){
+            renderBeer(beer)
+        }
+    }
+}
 
 function renderBeer(beer){
 
