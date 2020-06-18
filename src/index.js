@@ -22,7 +22,30 @@ document.addEventListener("DOMContentLoaded", e => {
         })
        }
        
-   
+    
+    
+       ul.addEventListener("click", e => {
+        if (e.target.className === "list-group-item") {
+       const beerId = e.target.dataset.id
+       fetch(`${baseUrl}/${beerId}`)
+       .then(resp => resp.json())
+       .then(beer => {
+         renderBeer(beer)
+       })
+     
+            
+        }
+    })
+ 
+    const renderBeer = beer => { 
+        const showDiv = document.querySelector("#beer-detail")
+        showDiv.innerHTML =`
+          <h1>${beer.name}</h1>
+          <img src="${beer.image_url}">
+          <h3>${beer.tagline}</h3>
+          <p>${beer.description}</p>
+        `
+          }
     
  })
  
