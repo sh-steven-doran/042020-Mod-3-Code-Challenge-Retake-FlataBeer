@@ -18,45 +18,33 @@ const getBeers = () => {
 const renderBeers = beers => {
     beerUl.innerHTML = ""
     beers.forEach(beer => {
-
-    
    const beerLI = document.createElement("li")
    beerLI.className = "list-group-item"
    beerLI.dataset.id = beer.id
    beerLI.innerHTML = `${beer.name}`
    beerUl.append(beerLI)
-}
-   )}
-
-
-
-// const getBeerDetails = () = {
-
-// fetch("http://localhost:3000/beers/:id")
-// .then(response => response.json())
-// .then(beer => renderBeerDetails(beer))
-// }
-
-// const renderBeerDetails = beer => {
-// beerDetail.innerHTML =`
-// <h1>${beer.name}</h1>
-// <img src=${<beer.image_url}>
-// <h3>${beer.tagline}</h3>
-// <p>${beer.description}</p>'
-//     }
-     
-     getBeers()
-//  getBeerDetails()
-
 })
+}
 
 
+document.addEventListener("click", function (event) {
+   
+if (event.target.data_id === beer.id) {
 
+// const getBeerDetails = () => {
 
+fetch("http://localhost:3000/beers/:id")
+.then(response => response.json())
+.then(beer => renderBeerDetails(beer))
+}}
 
-
-
-
-//-- As a user, when I click a beer name, the application should reveal more information about that particular beer.
-//;find beer 
-//how beer information
+const renderBeerDetails = beer => {
+beerDetail.innerHTML =`
+<h1>${beer.name}</h1>
+<img src=${beer.image_url}>
+<h3>${beer.tagline}</h3>
+<p>${beer.description}</p>'
+    
+}
+getBeers()
+})
